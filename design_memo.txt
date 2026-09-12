@@ -1,0 +1,24 @@
+Design Memo
+
+For this product recommendation program, I used lists, sets, loops, and set
+intersections. I first used a list to collect the customer's preferences because
+the customer may enter several answers. After the customer finishes, the list is
+changed into a set. This gets rid of repeated preferences. For example, if the
+customer enters "durable" twice, the program will still treat it as one
+preference.
+
+I also used a loop to go through the product catalog and convert each product's
+tags into a set. The count_matches function uses an intersection to find the tags
+that appear in both the product set and the customer's preference set. I used
+len() on that intersection to get the match score. Another loop checks every
+product and adds it to the recommendations only when it has at least one matching
+tag. Finally, I sorted the results in descending order so that the strongest
+matches are shown first.
+
+This approach works well for the current catalog, but I would make changes if the
+store had 1,000 or more products. Instead of checking every product each time, I
+could build an index that connects each tag to all products with that tag. The
+program could then look only at products connected to the customer's preferences.
+For a much larger catalog, I would also store the product data in a database
+instead of a Python file. That would make the catalog easier to update and would
+allow the program to search and filter the data more efficiently.
